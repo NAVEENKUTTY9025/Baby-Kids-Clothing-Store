@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | LITTLE NEST | Baby & Kids Boutique</title>
+    <!-- Custom Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFBFA3'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 13c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z'/%3E%3C/svg%3E">
+    <meta name="description" content="Whoops! The page you're looking for has wandered off. Let's get you back to LITTLE NEST.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        peach: '#FFBFA3',
+                        peachdark: '#E8A385',
+                        peachlight: '#FFE6DA',
+                        slate: '#111111',
+                        cream: '#FFF9F6',
+                        dusk: '#4A4A4A',
+                    },
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'serif'],
+                        'body': ['"Inter"', 'system-ui', 'sans-serif'],
+                        'opensans': ['"Open Sans"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'warm-pattern': "radial-gradient(circle at 10% 30%, rgba(255, 191, 163, 0.06) 0%, transparent 60%)",
+                    },
+                    animation: {
+                        'spin-slow': 'spinSlow 12s linear infinite',
+                        'float-gentle': 'floatGentle 4s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'ping-slow': 'pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+                    },
+                    keyframes: {
+                        spinSlow: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        floatGentle: {
+                            '0%,100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pingSlow: {
+                            '0%': { transform: 'scale(1)', opacity: '0.8' },
+                            '100%': { transform: 'scale(1.3)', opacity: '0' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #FFF9F6;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #F4F1DE;
+        }
+
+        /* Dark mode fallback text contrast overrides */
+        .dark .text-slate {
+            color: #F4F1DE;
+        }
+        .dark .text-dusk {
+            color: #9CA3AF;
+        }
+        .dark input,
+        .dark select,
+        .dark textarea {
+            color: #FFFFFF !important;
+        }
+
+        /* Toggle Buttons */
+        .toggle-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: white;
+            color: #FFBFA3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 191, 163, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .dark .toggle-btn {
+            background: #1E1E1E;
+            color: #FFBFA3;
+            border-color: rgba(255, 191, 163, 0.3);
+        }
+
+        .toggle-btn:hover {
+            background: #FFBFA3;
+            color: white;
+        }
+
+        .dark .toggle-btn:hover {
+            background: #FFBFA3;
+            color: white;
+        }
+
+        .toggle-btn.active {
+            background: #FFBFA3;
+            color: white;
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background: #FFBFA3;
+            color: #111111;
+            padding: 0.85rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(255, 191, 163, 0.35);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #E8A385;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 191, 163, 0.45);
+        }
+
+        .btn-secondary {
+            border: 1.5px solid #FFBFA3;
+            background: transparent;
+            color: #FFBFA3;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .dark .btn-secondary {
+            color: #FFBFA3;
+        }
+
+        .btn-secondary:hover {
+            background: #FFBFA3;
+            color: #111111;
+            transform: translateY(-2px);
+        }
+
+        /* Accent line */
+        .peach-line {
+            width: 70px;
+            height: 3px;
+            background: #FFBFA3;
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+
+        /* Animated elements */
+        .floating-icon {
+            animation: floatGentle 4s ease-in-out infinite;
+        }
+
+        /* RTL Fixes */
+        [dir="rtl"] .space-x-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+
+        [dir="rtl"] .ml-8 {
+            margin-left: 0;
+            margin-right: 2rem;
+        }
+
+        [dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+
+        [dir="rtl"] .peach-line {
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+
+<body class="bg-cream dark:bg-canvas-dark warm-pattern">
+
+    <!-- ========== HEADER ========== -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-cream dark:border-dusk/30 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+                <!-- Logo -->
+                <a href="index.html" class="font-display font-bold tracking-tight text-xl md:text-2xl text-slate dark:text-white">
+                    <span class="text-peach">LITTLE</span> NEST
+                </a>
+
+                <!-- Toggle Buttons Only -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="toggle-btn" title="Dark / Light">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn" title="RTL / LTR">
+                        ⇄
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== 404 MAIN CONTENT ========== -->
+    <div class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
+        <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+            <!-- Animated Icon -->
+            <div class="mb-6 floating-icon">
+                <div
+                    class="w-28 h-28 md:w-36 md:h-36 rounded-full border-8 border-peach/30 flex items-center justify-center mx-auto relative">
+                    <i class="fas fa-baby text-peach text-5xl md:text-6xl"></i>
+                    <div class="absolute inset-0 rounded-full border-4 border-peach/20 animate-ping-slow">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Large 404 Number -->
+            <div class="mb-4">
+                <span
+                    class="text-[120px] md:text-[180px] font-display font-extrabold text-peach leading-none tracking-tighter drop-shadow-lg">404</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl md:text-3xl font-display font-bold text-slate dark:text-white mb-3">
+                Whoops! That Page Wandered Off
+            </h1>
+
+            <!-- Divider -->
+            <div class="peach-line"></div>
+
+            <!-- Message -->
+            <p class="text-base md:text-lg text-dusk dark:text-gray-300 mb-8 leading-relaxed max-w-md mx-auto">
+                The page you're looking for has gone exploring. Don't worry — let's get you back to the cozy nest.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home mr-1"></i> Back to Home
+                </a>
+                <a href="service.html" class="btn-secondary">
+                    <i class="fas fa-heart mr-1"></i> Explore Collections
+                </a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="border-t border-peach/20 pt-8">
+                <p class="text-sm text-dusk dark:text-gray-400 mb-4">
+                    <i class="fas fa-star text-peach mr-2"></i> Keep Shopping — Quick Navigation
+                </p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <a href="about.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-peach transition">About</a>
+                    <span class="text-peach/40">•</span>
+                    <a href="service.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-peach transition">Services</a>
+                    <span class="text-peach/40">•</span>
+                    <a href="blog.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-peach transition">Blog</a>
+                    <span class="text-peach/40">•</span>
+                    <a href="faq.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-peach transition">FAQ</a>
+                    <span class="text-peach/40">•</span>
+                    <a href="contact.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-peach transition">Contact</a>
+                </div>
+            </div>
+
+            <!-- Fun Fact Note -->
+            <div class="mt-8 text-xs text-dusk/60 dark:text-gray-500">
+                <i class="fas fa-smile-wink mr-1"></i> Pro tip: The cutest outfits are just a click away.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            const themeBtn = document.getElementById('theme-toggle');
+
+            const updateThemeUI = (isDark) => {
+                if (themeBtn) {
+                    const moon = themeBtn.querySelector('.fa-moon');
+                    const sun = themeBtn.querySelector('.fa-sun');
+                    if (moon && sun) {
+                        if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                        else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                    }
+                    themeBtn.classList.toggle('active', isDark);
+                }
+            };
+
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+            // Check saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            } else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.remove('dark');
+                updateThemeUI(false);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            }
+
+            // RTL Toggle
+            const rtlBtn = document.getElementById('rtl-toggle');
+
+            const updateRtlUI = (isRtl) => {
+                const dir = isRtl ? 'rtl' : 'ltr';
+                document.documentElement.dir = dir;
+                document.documentElement.lang = isRtl ? 'ar' : 'en';
+                if (rtlBtn) rtlBtn.classList.toggle('active', isRtl);
+            };
+
+            const toggleRtl = () => {
+                const isRtl = document.documentElement.dir !== 'rtl';
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+                updateRtlUI(isRtl);
+            };
+
+            if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+
+            // Check saved RTL direction
+            if (localStorage.getItem('dir') === 'rtl') {
+                updateRtlUI(true);
+            } else {
+                updateRtlUI(false);
+            }
+        });
+    </script>
+</body>
+
+</html>

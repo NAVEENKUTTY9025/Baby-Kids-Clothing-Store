@@ -46,28 +46,320 @@
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
         
-        /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(14px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            height: 72px;
-            display: flex;
-            align-items: center;
-        }
-        body.dark .navbar { background: rgba(30, 30, 30, 0.88); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
-        .nav-logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem; color: var(--text-primary); transition: color 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .nav-actions { display: flex; gap: 1rem; align-items: center; }
-        .icon-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); cursor: pointer; transition: 0.2s; color: var(--text-primary); background: transparent; }
-        .icon-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: fixed;
+      width: calc(100% - 40px);
+      top: 16px;
+      left: 20px;
+      z-index: 1000;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 80px;
+      transition: all 0.3s ease;
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .flex-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    .nav-logo-text {
+      font-size: 1.5rem !important;
+      font-weight: 700 !important;
+      color: #111111;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      font-family: 'Playfair Display', serif;
+      white-space: nowrap;
+    }
+    .nav-logo-text span { color: var(--accent); }
+    .nav-menu-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      margin: 0 1.5rem;
+    }
+    .nav-links-group {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: #111111;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 0.4rem 0;
+      font-size: 1rem;
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: var(--accent);
+      transition: width 0.25s ease, left 0.25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+      left: 0;
+    }
+    .nav-link:hover, .nav-link.active { color: #000; }
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-btn {
+      background: none;
+      border: none;
+      color: #111111;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.4rem 0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+      position: relative;
+      font-family: 'Inter', sans-serif;
+    }
+    .dropdown-btn::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: var(--accent);
+      transition: width 0.25s ease, left 0.25s ease;
+    }
+    .dropdown-btn:hover::after, .dropdown-btn.active::after {
+      width: 100%;
+      left: 0;
+    }
+    .dropdown-btn:hover, .dropdown-btn.active { color: #000; }
+    .dropdown-menu {
+      position: absolute;
+      left: -1rem;
+      margin-top: 0.8rem;
+      width: 210px;
+      background: #FFFFFF;
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s;
+      transform: translateY(8px);
+      z-index: 60;
+      border: 1px solid rgba(0,0,0,0.03);
+      padding: 0.4rem 0;
+    }
+    .dropdown-container:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1.5rem;
+      color: #111111;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: background 0.15s, color 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+    .dropdown-menu a:first-child { border-top-left-radius: 20px; border-top-right-radius: 20px; }
+    .dropdown-menu a:last-child { border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
+    .dropdown-menu a:hover, .dropdown-menu a.active { background: var(--accent-light); color: #111111; }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #111111;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .icon-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+    .login-btn {
+      background: #111111;
+      color: #FFFFFF;
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: 0.2s;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+    }
+    .login-btn:hover { background: #2A2A2A; transform: translateY(-2px); }
+    .login-btn-secondary {
+      background: transparent;
+      color: #111111;
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: 0.2s;
+      white-space: nowrap;
+      border: 1px solid rgba(0,0,0,0.08);
+      font-family: 'Inter', sans-serif;
+    }
+    .login-btn-secondary:hover { border-color: #111111; background: rgba(0,0,0,0.02); }
+    
+    @media (max-width: 1180px) {
+      .navbar { width: 100%; top: 0; left: 0; border-radius: 0; border: none; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    }
+    
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .hamburger-icon, .close-icon { font-size: 1.6rem; color: #111111; }
+    .close-icon { display: none; }
+    .mobile-menu-btn.active .hamburger-icon { display: none; }
+    .mobile-menu-btn.active .close-icon { display: block; }
+    
+    .mobile-menu-panel {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out;
+      z-index: 999;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .mobile-menu-panel.show { max-height: calc(100vh - 72px); overflow-y: auto; }
+    .mobile-menu-inner { padding: 0.2rem 0; }
+    .mobile-nav-item { border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .mobile-nav-link {
+      color: #111111;
+      text-decoration: none;
+      display: block;
+      padding: 0.9rem 1.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-nav-link:hover, .mobile-nav-link.active { background: var(--accent-light); }
+    .mobile-dropdown-item { border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .mobile-dropdown-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #111111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.5rem;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-dropdown-btn:hover { background: var(--accent-light); }
+    .mobile-dropdown-icon { transition: transform 0.25s; }
+    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+      background: rgba(255,249,246,0.5);
+    }
+    .mobile-submenu.show { max-height: 240px; }
+    .mobile-submenu a {
+      display: block;
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      color: #111111;
+      text-decoration: none;
+      opacity: 0.8;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-submenu a:hover { background: var(--accent-light); opacity: 1; }
+    .mobile-login-btn {
+      display: inline-block;
+      margin: 0.8rem 1.5rem;
+      background: #111111;
+      color: #FFFFFF;
+      padding: 0.7rem 1.5rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-login-btn-secondary {
+      display: inline-block;
+      margin: 0.8rem 1.5rem;
+      background: transparent;
+      color: #111111;
+      padding: 0.7rem 1.5rem;
+      border-radius: 60px;
+      border: 1px solid rgba(0,0,0,0.08);
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-theme-rtl {
+      display: flex;
+      gap: 0.8rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      flex-wrap: wrap;
+    }
+    .mobile-icon-btn {
+      background: var(--accent-light);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      color: #111111;
+      cursor: pointer;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+    }
+    .mobile-icon-btn:hover { background: var(--accent); }
         
         /* Shop Layout */
         .shop-header {
@@ -122,27 +414,74 @@
             .sidebar { width: 100%; }
             .filter-group { display: inline-block; width: 48%; vertical-align: top; border-bottom: none; }
         }
+        @media (max-width: 1180px) {
+            .nav-menu-container, .nav-buttons { display: none !important; }
+            .mobile-menu-btn { display: block !important; }
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="container nav-content">
-        <a href="index.html" class="nav-logo"><span>LITTLE</span> NEST</a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="shop.html" class="active">Shop</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+  <div class="nav-container">
+    <div class="flex-nav">
+      <a href="index.html" class="nav-logo-text"><span>LITTLE</span> NEST</a>
+      <div class="nav-menu-container">
+        <div class="nav-links-group">
+          <div class="dropdown-container">
+            <button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-menu">
+              <a href="index.html">Home 1</a>
+              <a href="home2.html">Home 2</a>
+            </div>
+          </div>
+          <a href="shop.html" class="nav-link active">Shop</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="service.html" class="nav-link">Service</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="faq.html" class="nav-link">Faq</a>
+          <a href="contact.html" class="nav-link">Contact</a>
         </div>
-        <div class="nav-actions">
-            <a href="cart.html" class="icon-btn" style="position:relative;">
-                <i class="fas fa-shopping-cart"></i>
-                <span style="position:absolute; top:-4px; right:-4px; background:var(--accent-dark); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;">2</span>
-            </a>
-            <button class="icon-btn" onclick="document.body.classList.toggle('dark')"><i class="fas fa-moon"></i></button>
-        </div>
+      </div>
+      <div class="nav-buttons">
+        <a href="#" class="icon-btn" title="Cart" style="position: relative; text-decoration: none;">
+          <i class="fas fa-shopping-cart"></i>
+          <span style="position:absolute; top:-4px; right:-4px; background:var(--accent-dark); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">2</span>
+        </a>
+        <a href="login.html" class="login-btn-secondary">Sign In</a>
+        <a href="register.html" class="login-btn">Sign up</a>
+        <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+      </div>
+      <button id="mobile-menu-btn" class="mobile-menu-btn">
+        <i class="fas fa-bars hamburger-icon"></i>
+        <i class="fas fa-times close-icon"></i>
+      </button>
     </div>
+  </div>
+  
+  <div id="mobile-menu-panel" class="mobile-menu-panel">
+    <div class="mobile-menu-inner">
+      <div class="mobile-dropdown-item">
+        <button class="mobile-dropdown-btn" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
+        <div class="mobile-submenu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div>
+      </div>
+      <div class="mobile-nav-item"><a href="shop.html" class="mobile-nav-link active">Shop</a></div>
+      <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></div>
+      <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>
+      <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></div>
+      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">Faq</a></div>
+      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
+
+      <div class="mobile-nav-item"><a href="#" class="mobile-nav-link"><i class="fas fa-shopping-cart"></i> Cart (2)</a></div>
+      <div class="mobile-nav-item"><a href="login.html" class="mobile-login-btn-secondary">Sign In</a></div>
+      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn">Sign up</a></div>
+      <div class="mobile-theme-rtl">
+        <button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button>
+        <button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <header class="shop-header">
@@ -341,9 +680,149 @@
                     <div class="add-btn"><i class="fas fa-plus text-accent"></i></div>
                 </div>
             </a>
+
+            <!-- Product 11 -->
+            <a href="product-details.html" class="product-card">
+                <div class="img-wrapper">
+                    <img src="assets/b1.avif" alt="Product">
+                </div>
+                <div class="category">Baby Clothing</div>
+                <h3 class="title">Organic Swaddle Blanket</h3>
+                <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(63)</span></div>
+                <div class="price-row">
+                    <div class="price">$24.00</div>
+                    <div class="add-btn"><i class="fas fa-plus text-accent"></i></div>
+                </div>
+            </a>
+
+            <!-- Product 12 -->
+            <a href="product-details.html" class="product-card">
+                <div class="img-wrapper">
+                    <span class="badge sale">-20%</span>
+                    <img src="assets/b2.avif" alt="Product">
+                </div>
+                <div class="category">Toddler</div>
+                <h3 class="title">Classic Denim Overalls</h3>
+                <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(112)</span></div>
+                <div class="price-row">
+                    <div class="price"><span class="old-price">$45.00</span>$36.00</div>
+                    <div class="add-btn"><i class="fas fa-plus text-accent"></i></div>
+                </div>
+            </a>
         </div>
     </main>
 </div>
 
+<!-- Offers Section -->
+<section style="background: var(--accent-light); padding: 4rem 0;">
+    <div class="container" style="text-align: center;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; color: #111;">Special Offers</h2>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem;">Stock up on essentials and save big with our seasonal discounts.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div style="background: #fff; padding: 3rem; border-radius: 24px; box-shadow: var(--shadow);">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent-dark);">Buy 2 Get 1 Free</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">On all newborn sleepsuits. Mix and match styles.</p>
+                <a href="#" style="background: #111; color: #fff; padding: 0.8rem 1.8rem; border-radius: 40px; font-weight: 600; display: inline-block;">Shop Sleepsuits</a>
+            </div>
+            <div style="background: #fff; padding: 3rem; border-radius: 24px; box-shadow: var(--shadow);">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent-dark);">Extra 20% Off</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Use code <strong>COZY20</strong> on all winter accessories.</p>
+                <a href="#" style="background: #111; color: #fff; padding: 0.8rem 1.8rem; border-radius: 40px; font-weight: 600; display: inline-block;">Shop Winter</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Combos Section -->
+<section style="padding: 4rem 0;">
+    <div class="container">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; color: #111; text-align: center;">Curated Combos</h2>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; text-align: center;">Perfectly paired outfits, ready to go.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <!-- Combo 1 -->
+            <div style="border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 250px; display: flex;">
+                    <img src="assets/b1.avif" style="width: 50%; object-fit: cover;">
+                    <img src="assets/b4.avif" style="width: 50%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; text-align: center; background: #fff;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">The Organic Starter Set</h3>
+                    <div style="color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem;"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 1rem; margin-right: 8px;">$56.00</span>$45.00</div>
+                    <a href="#" style="border: 1px solid #111; padding: 0.6rem 1.5rem; border-radius: 40px; font-weight: 600; color: #111; display: inline-block;">Add to Cart</a>
+                </div>
+            </div>
+            <!-- Combo 2 -->
+            <div style="border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 250px; display: flex;">
+                    <img src="assets/b2.avif" style="width: 50%; object-fit: cover;">
+                    <img src="assets/b6.avif" style="width: 50%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; text-align: center; background: #fff;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Playtime Essentials</h3>
+                    <div style="color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem;"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 1rem; margin-right: 8px;">$48.00</span>$39.00</div>
+                    <a href="#" style="border: 1px solid #111; padding: 0.6rem 1.5rem; border-radius: 40px; font-weight: 600; color: #111; display: inline-block;">Add to Cart</a>
+                </div>
+            </div>
+            <!-- Combo 3 -->
+            <div style="border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 250px; display: flex;">
+                    <img src="assets/b5.avif" style="width: 50%; object-fit: cover;">
+                    <img src="assets/b7.webp" style="width: 50%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; text-align: center; background: #fff;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Sweet Dreams Duo</h3>
+                    <div style="color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem;"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 1rem; margin-right: 8px;">$60.00</span>$49.00</div>
+                    <a href="#" style="border: 1px solid #111; padding: 0.6rem 1.5rem; border-radius: 40px; font-weight: 600; color: #111; display: inline-block;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const body = document.body;
+  function updateThemeIcon(isDark) {
+    if(themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    if(mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme';
+  }
+  function toggleTheme() {
+    if(body.classList.contains('dark')) { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateThemeIcon(false); }
+    else { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateThemeIcon(true); }
+  }
+  if(localStorage.getItem('theme') === 'dark') { body.classList.add('dark'); updateThemeIcon(true); } else updateThemeIcon(false);
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if(mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  // RTL
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+  const htmlEl = document.documentElement;
+  function toggleRTL() { if(htmlEl.getAttribute('dir') === 'rtl') { htmlEl.removeAttribute('dir'); localStorage.setItem('direction', 'ltr'); } else { htmlEl.setAttribute('dir', 'rtl'); localStorage.setItem('direction', 'rtl'); } }
+  if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if(mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+  if(localStorage.getItem('direction') === 'rtl') htmlEl.setAttribute('dir', 'rtl');
+  
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobilePanel = document.getElementById('mobile-menu-panel');
+  function toggleMobile() { mobilePanel.classList.toggle('show'); mobileBtn.classList.toggle('active'); document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : ''; }
+  if(mobileBtn) mobileBtn.addEventListener('click', toggleMobile);
+  document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => { link.addEventListener('click', () => { if(mobilePanel.classList.contains('show')) toggleMobile(); }); });
+  
+  // Mobile dropdowns
+  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const submenu = this.nextElementSibling;
+      const icon = this.querySelector('.mobile-dropdown-icon');
+      document.querySelectorAll('.mobile-submenu').forEach(menu => { if(menu !== submenu) menu.classList.remove('show'); });
+      document.querySelectorAll('.mobile-dropdown-icon').forEach(i => { if(i !== icon) i.classList.remove('rotated'); });
+      if(submenu) { submenu.classList.toggle('show'); icon.classList.toggle('rotated'); }
+    });
+  });
+</script>
 </body>
 </html>

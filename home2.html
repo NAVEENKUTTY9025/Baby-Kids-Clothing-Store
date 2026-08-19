@@ -162,6 +162,7 @@
       text-decoration: none;
       letter-spacing: -0.5px;
       font-family: 'Playfair Display', serif;
+      white-space: nowrap;
     }
     .nav-logo-text span { color: var(--accent); }
     .nav-menu-container {
@@ -601,6 +602,7 @@
       font-weight: 700 !important;
       color: #111111 !important;
       text-decoration: none !important;
+      letter-spacing: -0.5px;
       font-family: 'Playfair Display', serif;
       display: inline-block;
       margin-bottom: 1rem;
@@ -620,7 +622,7 @@
       margin-bottom: 10px;
       align-items: center;
     }
-    .footer-contact-item i { color: var(--accent); min-width: 18px; text-align: center; }
+    .footer-contact-item i { color: var(--accent); width: 24px; text-align: center; display: inline-block; }
     .footer-contact-item span, .footer-contact-item a { color: var(--footer-text-muted); text-decoration: none; font-size: 0.875rem; font-family: 'Open Sans', sans-serif; }
     .footer-contact-item a:hover { color: #111111; }
     .footer-copyright {
@@ -988,6 +990,9 @@
     justify-content: center;
     background: url('assets/home2_hero.png') center/cover no-repeat;
     position: relative;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
   }
   .hero-2::before {
     content: '';
@@ -1008,6 +1013,11 @@
     box-shadow: 0 24px 48px rgba(0,0,0,0.1);
     animation: fadeInUp 0.8s ease-out;
     margin: 0 1.5rem;
+  }
+  @media (max-width: 480px) {
+    .glass-card {
+      padding: 2.5rem 1.5rem;
+    }
   }
   .glass-title {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -1182,6 +1192,48 @@
       </div>
     </div>
   </div>
+<!-- Customer Reviews -->
+<section style="background: #FFFFFF;">
+  <div class="container">
+    <h2 class="section-title">What Parents <span class="text-accent">Say</span></h2>
+    <div class="accent-divider"></div>
+    
+    <div class="testimonial-grid" style="margin-top: 3rem;">
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p style="margin: 1rem 0;">"The quality is absolutely amazing. My daughter practically lives in her Little Nest rompers. They wash so well!"</p>
+        <h4 style="color: #111;">— Sarah M.</h4>
+        <div style="color: #FFBFA3; font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p style="margin: 1rem 0;">"Finally found a brand that makes cute, stylish boy clothes that are actually comfortable. We are obsessed!"</p>
+        <h4 style="color: #111;">— Jessica T.</h4>
+        <div style="color: #FFBFA3; font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p style="margin: 1rem 0;">"I buy all my baby shower gifts from here now. The packaging is gorgeous and the fabrics are buttery soft."</p>
+        <h4 style="color: #111;">— Emily R.</h4>
+        <div style="color: #FFBFA3; font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Follow Us on Instagram -->
+<section style="background: #FFF9F6; padding-top: 60px; padding-bottom: 60px;">
+  <div class="container text-center">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; color: #111;">Follow our journey on Instagram</h2>
+    <p style="margin-bottom: 2rem; color: var(--text-secondary); font-family: 'Open Sans', sans-serif;"><a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">@littlenestboutique</a></p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+      <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 1; background: #e9ecef;"><img src="assets/home2_baby_age.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 1; background: #e9ecef;"><img src="assets/home2_toddler_age.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 1; background: #e9ecef;"><img src="assets/kids_clothing.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 1; background: #e9ecef;"><img src="assets/spring_summer.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -1190,7 +1242,7 @@
       <div class="footer-col"><a href="index.html" class="footer-logo"><span>LITTLE</span> NEST</a><p>Premium baby & kids clothing. Soft, sustainable, and made with love.</p><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-pinterest-p"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div></div>
       <div class="footer-col"><h4>Shop</h4><a href="#">New Arrivals</a><a href="#">Onesies</a><a href="#">Toddler</a><a href="#">Accessories</a></div>
       <div class="footer-col"><h4>Help</h4><a href="#">Size Guide</a><a href="#">Shipping & Returns</a><a href="#">Gift Cards</a><a href="#">Contact</a></div>
-      <div class="footer-col"><h4>Connect</h4><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@littlenest.com">hello@littlenest.com</a></div><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+18005551234">+1 (800) 555-1234</a></div><div class="footer-contact-item"><i class="fas fa-map-pin"></i><span>Brooklyn, NY</span></div></div>
+      <div class="footer-col"><h4>Connect</h4><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@littlenest.com">hello@littlenest.com</a></div><div class="footer-contact-item"><i class="fas fa-phone"></i><a href="tel:+18005551234">+1 (800) 555-1234</a></div><div class="footer-contact-item"><i class="fas fa-map-pin"></i><span>123 Brooklyn Ave, Suite 2, Brooklyn, NY 11201</span></div></div>
     </div>
     <div class="footer-copyright"><p>© 2026 LITTLE NEST — baby & kids boutique. All rights reserved.</p><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
   </div>

@@ -162,6 +162,7 @@
       text-decoration: none;
       letter-spacing: -0.5px;
       font-family: 'Playfair Display', serif;
+      white-space: nowrap;
     }
     .nav-logo-text span { color: var(--accent); }
     .nav-menu-container {
@@ -627,6 +628,7 @@
       font-weight: 700 !important;
       color: #111111 !important;
       text-decoration: none !important;
+      letter-spacing: -0.5px;
       font-family: 'Playfair Display', serif;
       display: inline-block;
       margin-bottom: 1rem;
@@ -646,7 +648,7 @@
       margin-bottom: 10px;
       align-items: center;
     }
-    .footer-contact-item i { color: var(--accent); min-width: 18px; text-align: center; }
+    .footer-contact-item i { color: var(--accent); width: 24px; text-align: center; display: inline-block; }
     .footer-contact-item span, .footer-contact-item a { color: var(--footer-text-muted); text-decoration: none; font-size: 0.875rem; font-family: 'Open Sans', sans-serif; }
     .footer-contact-item a:hover { color: #111111; }
     .footer-copyright {
@@ -1021,7 +1023,7 @@
       <p style="color: #F8F9FA; font-size: 1.125rem; margin-bottom:2rem; font-family:'Open Sans', sans-serif; text-shadow: 0 1px 4px rgba(0,0,0,0.5);">Organic cotton, timeless designs, and the coziest pieces for babies & kids. Free shipping over $75.</p>
       <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content: center;">
         <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
-        <a href="#categories" class="btn-outline">Explore <i class="fas fa-arrow-right"></i></a>
+        <a href="#categories" class="btn-outline" style="border-color: #FFFFFF; color: #FFFFFF; background: rgba(0,0,0,0.2);">Explore <i class="fas fa-arrow-right"></i></a>
       </div>
       <div style="margin-top: 2rem; display: flex; gap: 1.8rem; flex-wrap:wrap; justify-content: center; font-family:'Inter', sans-serif; color: #F8F9FA; text-shadow: 0 1px 4px rgba(0,0,0,0.5);">
         <span><i class="fas fa-check-circle text-accent"></i> Organic fabrics</span>
@@ -1222,7 +1224,67 @@
   </div>
 </section>
 
-<!-- ===== SECTION 4: CTA BANNER ===== -->
+<!-- ===== SECTION 4: WHY CHOOSE US ===== -->
+<section style="background: #FFFFFF;">
+  <div class="container">
+    <h2 class="section-title">Why Parents <span class="text-accent">Love</span> Us</h2>
+    <div class="accent-divider"></div>
+    <div class="steps-grid" style="margin-top: 3rem;">
+      <div class="step-item">
+        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Organic Cotton</h3>
+        <p>Soft on delicate skin and kind to the planet.</p>
+      </div>
+      <div class="step-item">
+        <div class="card-icon"><i class="fas fa-box-open"></i></div>
+        <h3>Free Returns</h3>
+        <p>Not the right fit? Return it for free within 30 days.</p>
+      </div>
+      <div class="step-item">
+        <div class="card-icon"><i class="fas fa-truck-fast"></i></div>
+        <h3>Fast Shipping</h3>
+        <p>Free priority shipping on all orders over $75.</p>
+      </div>
+      <div class="step-item">
+        <div class="card-icon"><i class="fas fa-award"></i></div>
+        <h3>Award Winning</h3>
+        <p>Recognized for excellence in baby wear design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: CUSTOMER REVIEWS ===== -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <h2 class="section-title">Happy <span class="text-accent">Families</span></h2>
+    <div class="accent-divider"></div>
+    <p class="section-sub">Don't just take our word for it. Here is what our community of parents have to say.</p>
+    
+    <div class="testimonial-grid" style="margin-top: 3rem;">
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p style="margin: 1rem 0;">"The quality is absolutely amazing. My daughter practically lives in her Little Nest rompers. They wash so well!"</p>
+        <h4 style="color: #111;">— Sarah M.</h4>
+        <div style="color: #FFBFA3; font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p style="margin: 1rem 0;">"Finally found a brand that makes cute, stylish boy clothes that are actually comfortable. We are obsessed!"</p>
+        <h4 style="color: #111;">— Jessica T.</h4>
+        <div style="color: #FFBFA3; font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p style="margin: 1rem 0;">"I buy all my baby shower gifts from here now. The packaging is gorgeous and the fabrics are buttery soft."</p>
+        <h4 style="color: #111;">— Emily R.</h4>
+        <div style="color: #FFBFA3; font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: CTA BANNER ===== -->
 <section style="background: var(--bg-secondary); padding-top: 60px; padding-bottom: 60px;">
   <div class="container">
     <div class="cta-banner" style="margin-top: 0;">
@@ -1243,7 +1305,7 @@
       <div class="footer-col"><a href="index.html" class="footer-logo"><span>LITTLE</span> NEST</a><p>Premium baby & kids clothing. Soft, sustainable, and made with love.</p><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-pinterest-p"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div></div>
       <div class="footer-col"><h4>Shop</h4><a href="#">New Arrivals</a><a href="#">Onesies</a><a href="#">Toddler</a><a href="#">Accessories</a></div>
       <div class="footer-col"><h4>Help</h4><a href="#">Size Guide</a><a href="#">Shipping & Returns</a><a href="#">Gift Cards</a><a href="#">Contact</a></div>
-      <div class="footer-col"><h4>Connect</h4><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@littlenest.com">hello@littlenest.com</a></div><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+18005551234">+1 (800) 555-1234</a></div><div class="footer-contact-item"><i class="fas fa-map-pin"></i><span>Brooklyn, NY</span></div></div>
+      <div class="footer-col"><h4>Connect</h4><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@littlenest.com">hello@littlenest.com</a></div><div class="footer-contact-item"><i class="fas fa-phone"></i><a href="tel:+18005551234">+1 (800) 555-1234</a></div><div class="footer-contact-item"><i class="fas fa-map-pin"></i><span>123 Brooklyn Ave, Suite 2, Brooklyn, NY 11201</span></div></div>
     </div>
     <div class="footer-copyright"><p>© 2026 LITTLE NEST — baby & kids boutique. All rights reserved.</p><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
   </div>
